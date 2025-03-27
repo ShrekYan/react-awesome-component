@@ -12,20 +12,27 @@ export default defineConfig({
         }),
     ],
     build: {
+        cssCodeSplit:true,
         lib: {
-            entry: "src/index.ts",
+            entry: {
+                Loading:"src/components/Loading/Loading.tsx",
+                ErrorBoundary:"src/components/ErrorBoundary/index.tsx",
+                FloatButton:"src/components/FloatButton/index.tsx",
+                Network:"src/components/Network/index.tsx"
+            },
             name: "react-awesome-component",
-            formats: ["es", "umd"],
+            formats: ["es"],
             fileName: (format) => `react-awesome-component.${format}.js`
         },
         rollupOptions: {
-            external: ["react", "react-dom", "react-use", "hammerjs"],
+            external: ["react", "react-dom", "react-use"],
             output: {
                 globals: {
                     react: "React",
                     'react-dom': "ReactDOM"
                 }
-            }
+            },
+
         }
     },
     css: {
