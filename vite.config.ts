@@ -40,5 +40,12 @@ export default defineConfig({
                 }
             }
         }
-    }
+    },
+ /*   css:{
+        modules: {
+            //去除css modules
+            scopeBehaviour: "local",
+            localsConvention: "camelCase"
+        }
+    }*/
 })

@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, {useEffect, useRef} from "react";
 import Hammer from "hammerjs";
-import style from "./index.module.scss";
+import "./index.scss";
 
 type XYPoint = { x: number; y: number };
 
-const FloatButton: React.FC<{ url: string }> = ({ url }) => {
+const FloatButton: React.FC<{ url: string }> = ({url}) => {
     const floatButtonElementRef = useRef<HTMLDivElement>(null);
     //开始位置
     const startPointRef = useRef<XYPoint>({
@@ -123,8 +123,8 @@ const FloatButton: React.FC<{ url: string }> = ({ url }) => {
     }, []);
 
     return (
-        <div className={style.floatButtonWrap} ref={floatButtonElementRef}>
-            <img src={url} />
+        <div className="float-button-wrap" ref={floatButtonElementRef}>
+            <img src={url}/>
         </div>
     );
 };

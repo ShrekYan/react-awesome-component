@@ -1,9 +1,9 @@
 // src/index.ts
 // 先导入所有组件的 CSS 文件
-import './components/ErrorBoundary/index.module.scss'; // 新增 CSS 导入
-import './components/FloatButton/index.module.scss'; // 新增 CSS 导入
+import './components/ErrorBoundary/index.scss'; // 新增 CSS 导入
+import './components/FloatButton/index.scss'; // 新增 CSS 导入
 import "./components/Loading/Loading.scss"
-import "./components/Network/index.module.scss"
+import "./components/Network/index.scss"
 import "./components/PageLoading/PageLoading.scss"
 
 

@@ -1,37 +1,41 @@
-import React, { useEffect } from "react";
-import { ErrorBoundary as ErrorBoundaryComponent } from "react-error-boundary";
-import type { FallbackProps } from "react-error-boundary";
+import React, {useEffect} from "react";
+import type {FallbackProps} from "react-error-boundary";
+import {ErrorBoundary as ErrorBoundaryComponent} from "react-error-boundary";
 import errorBodyImage from "./images/bg-errorBody.jpg";
 import errorText from "./images/bg-errorText.png";
-import style from "./index.module.scss";
+import "./index.scss"; // 修改为普通 CSS 导入
 
-const ErrorFallback: React.FC<FallbackProps> = ({ error }) => {
+const ErrorFallback: React.FC<FallbackProps> = ({error}) => {
     useEffect(() => {
         console.log(error);
     }, [error]);
 
     return (
-        <div className={style.errorBoundaryContainer}>
-            <div className={style.errorBoundaryContent}>
-                <img src={errorBodyImage} width="100%" height="100%" />
-                <img src={errorText} width="100%" height="100%" />
+        <div className="errorBoundary-container">
+            <div className="errorBoundary-content">
+                <img src={errorBodyImage} width="100%" height="100%" alt="Error visualization"/>
+                <img src={errorText} width="100%" height="100%" alt="Error message"/>
             </div>
         </div>
     );
 };
 
 const ErrorBoundary: React.FC<{ children: React.ReactElement | React.ReactElement[] }> = ({
-    children
-}) => {
+                                                                                              children
+                                                                                          }) => {
     useEffect(() => {
-        window.addEventListener("error", function (event) {
-            console.log(event);
-        });
+        const handleError = (event: ErrorEvent) => console.log(event);
+        const handleRejection = (event: PromiseRejectionEvent) => console.log(event);
 
-        window.addEventListener("unhandledrejection", function (event) {
-            console.log(event);
-        });
+        window.addEventListener("error", handleError);
+        window.addEventListener("unhandledrejection", handleRejection);
+
+        return () => {
+            window.removeEventListener("error", handleError);
+            window.removeEventListener("unhandledrejection", handleRejection);
+        };
     }, []);
+
     return (
         <ErrorBoundaryComponent FallbackComponent={ErrorFallback}>
             {children}
