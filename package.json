@@ -36,12 +36,7 @@
       "types": "./dist/types/components/PageLoading/PageLoading.d.ts",
       "import": "./dist/PageLoading.mjs",
       "style": "./dist/PageLoading.css"
-    },
-    "./FloatButton.css": "./dist/FloatButton.css",
-    "./Loading.css": "./dist/Loading.css",
-    "./ErrorBoundary.css": "./dist/ErrorBoundary.css",
-    "./Network.css": "./dist/Network.css",
-    "./PageLoading.css": "./dist/PageLoading.css"
+    }
   },
   "homepage": "",
   "bugs": "",

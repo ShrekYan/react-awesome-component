@@ -2,30 +2,46 @@
   "name": "react-awesome-all-component",
   "version": "0.0.4",
   "types": "./dist/types/index.d.ts",
+  "typings": "./dist/types/index.d.ts",
+  "main": "./dist/react-awesome-all-component.mjs",
+  "publishConfig": {
+    "registry": ""
+  },
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
     "./Loading": {
-      "types": "./dist/types/Loading.d.ts",
+      "types": "./dist/types/components/Loading/index.d.ts",
       "import": "./dist/Loading.mjs",
       "style": "./dist/Loading.css"
     },
     "./ErrorBoundary": {
-      "types": "./dist/types/ErrorBoundary.d.ts",
+      "types": "./dist/types/components/ErrorBoundary/index.d.ts",
       "import": "./dist/ErrorBoundary.mjs",
       "style": "./dist/ErrorBoundary.css"
     },
     "./FloatButton": {
-      "types": "./dist/types/FloatButton.d.ts",
+      "types": "./dist/types/components/FloatButton/index.d.ts",
       "import": "./dist/FloatButton.mjs",
       "style": "./dist/FloatButton.css"
     },
     "./Network": {
-      "types": "./dist/types/Network.d.ts",
+      "types": "./dist/types/components/Network/index.d.ts",
       "import": "./dist/Network.mjs",
       "style": "./dist/Network.css"
-    }
-  },
-  "publishConfig": {
-    "registry": ""
+    },
+    "./PageLoading": {
+      "types": "./dist/types/components/PageLoading/PageLoading.d.ts",
+      "import": "./dist/PageLoading.mjs",
+      "style": "./dist/PageLoading.css"
+    },
+    "./FloatButton.css": "./dist/FloatButton.css",
+    "./Loading.css": "./dist/Loading.css",
+    "./ErrorBoundary.css": "./dist/ErrorBoundary.css",
+    "./Network.css": "./dist/Network.css",
+    "./PageLoading.css": "./dist/PageLoading.css"
   },
   "homepage": "",
   "bugs": "",
@@ -48,25 +64,30 @@
     "react-use": "^17.6.0",
     "sass": "1.79.6"
   },
-  "typesVersions": {
-    "*": {
-      "Loading": [
-        "dist/types/components/Loading/Loading.d.ts"
-      ],
-      "ErrorBoundary": [
-        "dist/types/components/ErrorBoundary/index.d.ts"
-      ],
-      "FloatButton": [
-        "dist/types/components/FloatButton/index.d.ts"
-      ],
-      "Network": [
-        "dist/types/components/Network/index.d.ts"
-      ]
-    }
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-use": "^17.3.0 || ^18.0.0"
   },
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
     "prepublishOnly": "npm run build"
+  },
+  "typesVersions": {
+    "*": {
+      "Loading": [
+        "dist/types/Loading.d.ts"
+      ],
+      "ErrorBoundary": [
+        "dist/types/ErrorBoundary.d.ts"
+      ],
+      "FloatButton": [
+        "dist/types/FloatButton.d.ts"
+      ],
+      "Network": [
+        "dist/types/Network.d.ts"
+      ]
+    }
   }
 }

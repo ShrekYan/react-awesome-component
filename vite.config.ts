@@ -16,7 +16,8 @@ export default defineConfig({
         }),
     ],
     build: {
-        cssCodeSplit: true,
+        //不对css代码进行分割
+        //cssCodeSplit: true,
         lib: {
             entry: {
                 //全局导出
