@@ -1,33 +1,30 @@
-import {defineConfig} from 'vite';
-import react from "@vitejs/plugin-react"
-import dts from "vite-plugin-dts"
-
+import { defineConfig } from 'vite';
+import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 export default defineConfig({
     plugins: [
         react({
-            //使用经典import导入模式，不使用运行时
             jsxRuntime: 'classic'
         }),
         dts({
-            insertTypesEntry: true, // 开启自动生成类型入口
-            outDir: "dist/types",   // 类型输出目录
+            insertTypesEntry: true,
+            outDir: "dist/types",
             entryRoot: "src"
         }),
+        libInjectCss(),//编译后的文件添加css资源引用
     ],
     build: {
-        //不对css代码进行分割
-        //cssCodeSplit: true,
+        cssCodeSplit: true, // 开启CSS代码分割
         lib: {
             entry: {
-                //全局导出
                 index: "./src/index.ts",
-                //按需导出
                 Loading: "src/components/Loading/Loading.tsx",
                 ErrorBoundary: "src/components/ErrorBoundary/index.tsx",
                 FloatButton: "src/components/FloatButton/index.tsx",
                 Network: "src/components/Network/index.tsx",
-                PageLoading:"src/components/PageLoading/PageLoading.tsx",
+                PageLoading: "src/components/PageLoading/PageLoading.tsx",
             },
             name: "react-awesome-component",
             formats: ["es"]
